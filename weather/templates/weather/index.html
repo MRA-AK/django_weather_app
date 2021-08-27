@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather</title>
+    </head>
+    <body>
+        <form method="GET">
+            <div>
+                <label for="city"></label>
+                <input type="text" id="city" value="{{ request.GET.city }}" placeholder="City..." name="city"/>
+            </div>
+            <input type="submit" value="Submit"/>
+        </form>
+        {% if result %}
+            <h3>{{ result.region }}</h3>
+            <h3>{{ result.dayhour }}</h3>
+            <h3>{{ result.temp_now }}</h3>
+            <h3>{{ result.weather_now }}</h3>
+        {% endif %}
+    </body>
+</html>
