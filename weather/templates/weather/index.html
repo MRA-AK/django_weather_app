@@ -12,10 +12,11 @@
             <input type="submit" value="Submit"/>
         </form>
         {% if result %}
-            <h3>{{ result.region }}</h3>
-            <h3>{{ result.dayhour }}</h3>
-            <h3>{{ result.temp_now }}</h3>
-            <h3>{{ result.weather_now }}</h3>
+            <h3>{{ result.location }}</h3>
+            <h3>{{ result.temp }} <span>&#8451;</span></h3>
+            <img src="{{ result.d0_svg }}" alt="today">
+            <h3>{{ result.humidity }}</h3>
+            <h3>{{ result.wind }}</h3>
         {% endif %}
     </body>
 </html>
