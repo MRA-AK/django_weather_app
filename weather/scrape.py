@@ -18,7 +18,7 @@ def scrape_weather(city):
             soup = BeautifulSoup(response.text, 'html.parser')
 
             result['temp'] = soup.find('span', attrs = {'id':'wob_tm'}).text
-            result['location'] = soup.find('div', attrs = {'id':'wob_loc'}).text # TOOD: find country
+            result['location'] = soup.find('div', attrs = {'id':'wob_loc'}).text # TODO: find country
             result['humidity'] = soup.find('span', attrs = {'id':'wob_hm'}).text
             result['precipitation'] = soup.find('span', attrs = {'id':'wob_pp'}).text
             result['wind'] = soup.find('span', attrs = {'id':'wob_ws'}).text
