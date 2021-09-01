@@ -22,6 +22,7 @@ def scrape_weather(city):
             result['humidity'] = soup.find('span', attrs = {'id':'wob_hm'}).text
             result['precipitation'] = soup.find('span', attrs = {'id':'wob_pp'}).text
             result['wind'] = soup.find('span', attrs = {'id':'wob_ws'}).text
+            result['description'] = soup.find('span', attrs = {'id':'wob_dc'}).text
             now = soup.find('img', attrs = {'id':'wob_tci'})
             result['now_svg'] = "http://" + re.findall(r'src=\"//(.*?)\"',str(now))[0]
             
