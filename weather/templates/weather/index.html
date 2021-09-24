@@ -1,23 +1,227 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset='utf-8'>
         <title>Weather</title>
+        <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+        <link href='' rel='stylesheet'>
+        <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+        <style>
+            body {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba(238, 237, 237, 0.438);
+                color: rgb(105, 104, 104);
+                font-family: sans-serif
+            }
+
+            .container {
+                width: fit-content
+            }
+
+            .card {
+                padding: 1.2rem 3rem 1rem 3rem;
+                margin: 1rem;
+                border-radius: 1.5rem;
+                border-color: rgba(238, 237, 237, 0.438);
+                box-shadow: 5px 8px 10px #80808033
+            }
+
+            @media(max-width:767px) {
+                .card {
+                    height: 10rem;
+                    padding: 1.5rem 1.5rem 1rem 1.5rem
+                }
+            }
+
+            .carousel-indicators li {
+                width: 5px;
+                height: 6px;
+                border-radius: 100%;
+                opacity: 0.2;
+                background-color: #000000
+            }
+
+            .carousel-indicators {
+                margin-bottom: 0
+            }
+
+            .temp {
+                font-size: 5rem;
+                color: rgb(57, 57, 58)
+            }
+
+            .card-1 {
+                background: linear-gradient(to right, #ffffff 50%, rgba(241, 224, 190, 0.507))
+            }
+
+            @media(max-width:767px) {
+                .temp {
+                    font-size: 3rem
+                }
+            }
+
+            .location {
+                margin-bottom: 1.5rem
+            }
+
+            @media(max-width:767px) {
+                .location {
+                    font-size: 0.75rem
+                }
+            }
+
+            .img-fluid {
+                float: right;
+                width: 65%;
+                display: flex;
+                align-items: center
+            }
+
+            .row2 .img-fluid {
+                margin: 10% 0;
+                opacity: 0.5;
+                width: 40%
+            }
+
+            .card-2 .row {
+                justify-content: center
+            }
+
+            .card-3 .row {
+                justify-content: center
+            }
+
+            .row1 {
+                font-size: 0.8rem;
+                font-weight: bold;
+                color: black
+            }
+
+            .row3 {
+                font-size: 0.9rem;
+                font-weight: bold;
+                color: black
+            }
+
+            @media(max-width:400px) {
+                .row3 {
+                    font-size: 0.7rem;
+                    font-weight: bold;
+                    color: black
+                }
+            }
+
+            @media(max-width:320px) {
+                .row3 {
+                    font-size: 0.6rem;
+                    font-weight: bold;
+                    color: black
+                }
+            }
+
+            .row4 {
+                font-size: 0.6rem;
+                color: rgb(196, 196, 196);
+                margin: 5% 0 2.5rem
+            }
+
+            .card-3 .row3 {
+                margin: 5% 0 2.5rem
+            }
+
+            .col {
+                padding: 1rem 2rem 1rem 2rem;
+                overflow: visible
+            }
+
+            .row {
+                overflow: visible
+            }
+        </style>
     </head>
-    <body>
-        <form method="GET">
-            <div>
+    <body oncontextmenu='return false' class='snippet-body'>
+        <div class="container">
+            <form class="form-inline justify-content-center">
                 <label for="city"></label>
-                <input type="text" id="city" value="{{ request.GET.city }}" placeholder="City..." name="city"/>
-            </div>
-            <input type="submit" value="Submit"/>
-        </form>
-        {% if result %}
-            <h3>{{ result.location }}</h3>
-            <h3>{{ result.temp }} <span>&#8451;</span></h3>
-            <h3>{{ result.description }}</h3>
-            <img src="{{ result.d0_svg }}" alt="today">
-            <h3>{{ result.humidity }}</h3>
-            <h3>{{ result.wind }}</h3>
-        {% endif %}
+                <input class="form-control mr-sm-2" type="text" id="city" value="{{ request.GET.city }}" placeholder="City..." name="city">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            {% if result %}
+                <div class="card card-1">
+                    <div id="demo" class="carousel slide" data-ride="carousel">
+                        <!-- The slideshow -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="temp">{{ result.temp }}&deg;</div>
+                                        <div class="location">{{ result.location }}</div>
+                                        <div class="location">{{ result.description }}</div>
+                                        <div class="location small">Humidity: {{ result.humidity }}&nbsp;&nbsp;&nbsp;&nbsp;Wind: {{ result.wind }}</div>
+                                    </div>
+                                    <div class="col-6 justify-content-right"> <img class="img-fluid" src="{{ result.now_svg }}" alt="today"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-2">
+                    <div id="demo" class="carousel slide" data-ride="carousel">
+                        <!-- The slideshow -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row row1">{{ result.d0_day }}</div>
+                                        <div class="row row2"><img src="{{ result.d0_svg }}" alt="today" /></div>
+                                        <div class="row row3">{{ result.d0_max_temp }}&deg; {{ result.d0_min_temp }}&deg;</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row row1">{{ result.d1_day }}</div>
+                                        <div class="row row2"><img src="{{ result.d1_svg }}" alt="today" /></div>
+                                        <div class="row row3">{{ result.d1_max_temp }}&deg; {{ result.d1_min_temp }}&deg;</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row row1">{{ result.d2_day }}</div>
+                                        <div class="row row2"><img src="{{ result.d2_svg }}" alt="today" /></div>
+                                        <div class="row row3">{{ result.d2_max_temp }}&deg; {{ result.d2_min_temp }}&deg;</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row row1">{{ result.d3_day }}</div>
+                                        <div class="row row2"><img src="{{ result.d3_svg }}" alt="today" /></div>
+                                        <div class="row row3">{{ result.d3_max_temp }}&deg; {{ result.d3_min_temp }}&deg;</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row row1">{{ result.d4_day }}</div>
+                                        <div class="row row2"><img src="{{ result.d4_svg }}" alt="today" /></div>
+                                        <div class="row row3">{{ result.d4_max_temp }}&deg; {{ result.d4_min_temp }}&deg;</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row row1">{{ result.d5_day }}</div>
+                                        <div class="row row2"><img src="{{ result.d5_svg }}" alt="today" /></div>
+                                        <div class="row row3">{{ result.d5_max_temp }}&deg; {{ result.d5_min_temp }}&deg;</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row row1">{{ result.d6_day }}</div>
+                                        <div class="row row2"><img src="{{ result.d6_svg }}" alt="today" /></div>
+                                        <div class="row row3">{{ result.d6_max_temp }}&deg; {{ result.d6_min_temp }}&deg;</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row row1">{{ result.d7_day }}</div>
+                                        <div class="row row2"><img src="{{ result.d7_svg }}" alt="today" /></div>
+                                        <div class="row row3">{{ result.d7_max_temp }}&deg; {{ result.d7_min_temp }}&deg;</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+            {% endif %}
+        <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+        <script type='text/javascript'></script>
     </body>
 </html>
