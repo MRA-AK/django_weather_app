@@ -11,10 +11,10 @@
 <br />
 <p align="center">
   <a href="#">
-    <img src="logo.png" alt="Logo" width="80" height="80">
+    <img src="logo.png" alt="Logo" width="80" height="60">
   </a>
 
-  <h3 align="center">Djagno weather App</h3>
+  <h3 align="center">Django weather App</h3>
 
   <p align="center">
     Scrape weather information from google weather and display it.
@@ -77,7 +77,7 @@ Project Link: [https://github.com/MRA-AK/django_weather_app](https://github.com/
 [issues-shield]: https://img.shields.io/github/issues/mra-ak/django_weather_app.svg?style=for-the-badge
 [issues-url]: https://github.com/mra-ak/django_weather_app/issues
 [license-shield]: https://img.shields.io/github/license/mra-ak/django_weather_app.svg?style=for-the-badge
-[license-url]: https://github.com/mra-ak/django_weather_app/blob/master/LICENSE.txt
+[license-url]: https://github.com/MRA-AK/django_weather_app/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/mohammad-reza-akbari-204b0b12b/
 [product-screenshot]: screenshot.jpg
