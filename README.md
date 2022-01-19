@@ -60,8 +60,6 @@ Distributed under the GPL License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Mohammad reza Akbari - mra1373@gmail.com
-
 Project Link: [https://github.com/MRA-AK/django_weather_app](https://github.com/MRA-AK/django_weather_app)
 
 
